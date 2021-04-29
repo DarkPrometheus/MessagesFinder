@@ -42,41 +42,46 @@ namespace MessagesFinder
             this.pnlSenders = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.pnlData = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lblGeneralMensajesPorDia = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.lblGeneralPalablasRecividas = new System.Windows.Forms.Label();
+            this.lblGeneralDiaMasMensajes = new System.Windows.Forms.Label();
+            this.lblGeneralPalabasEnviadadGeneral = new System.Windows.Forms.Label();
+            this.lblGeneralMesMasMensajes = new System.Windows.Forms.Label();
+            this.lblGeneralAñoMasMensajes = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblCantidadMensajes = new System.Windows.Forms.Label();
+            this.lblGeneralCantidadMensajes = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pntMessagesTools = new System.Windows.Forms.Panel();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lblActualMensajesPorDia = new System.Windows.Forms.Label();
+            this.lblActualPalablasRecividas = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lblActualDiaMasMensajes = new System.Windows.Forms.Label();
+            this.lblActualPalabasEnviadadGeneral = new System.Windows.Forms.Label();
+            this.lblActualAñoMasMensajes = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblActualMesMasMensajes = new System.Windows.Forms.Label();
+            this.lblActualCantidadMensajes = new System.Windows.Forms.Label();
+            this.pnlTitle = new System.Windows.Forms.Panel();
+            this.lblConversationtitle = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblTotalDays = new System.Windows.Forms.Label();
+            this.lblUltimoMensaje = new System.Windows.Forms.Label();
+            this.lblPrimerMensaje = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.Fecha2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.Fecha1 = new System.Windows.Forms.DateTimePicker();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.pnlMessages = new System.Windows.Forms.Panel();
-            this.lblConversationtitle = new System.Windows.Forms.Label();
-            this.pnlTitle = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -158,7 +163,7 @@ namespace MessagesFinder
             // agregarToolStripMenuItem
             // 
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.agregarToolStripMenuItem.Text = "Agregar";
             this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
             // 
@@ -203,22 +208,19 @@ namespace MessagesFinder
             // pnlData
             // 
             this.pnlData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.pnlData.Controls.Add(this.label2);
+            this.pnlData.Controls.Add(this.button1);
+            this.pnlData.Controls.Add(this.lblGeneralMensajesPorDia);
             this.pnlData.Controls.Add(this.label28);
-            this.pnlData.Controls.Add(this.label20);
-            this.pnlData.Controls.Add(this.label19);
-            this.pnlData.Controls.Add(this.label13);
-            this.pnlData.Controls.Add(this.label8);
-            this.pnlData.Controls.Add(this.label12);
-            this.pnlData.Controls.Add(this.label6);
-            this.pnlData.Controls.Add(this.label4);
-            this.pnlData.Controls.Add(this.label17);
-            this.pnlData.Controls.Add(this.label18);
+            this.pnlData.Controls.Add(this.lblGeneralPalablasRecividas);
+            this.pnlData.Controls.Add(this.lblGeneralDiaMasMensajes);
+            this.pnlData.Controls.Add(this.lblGeneralPalabasEnviadadGeneral);
+            this.pnlData.Controls.Add(this.lblGeneralMesMasMensajes);
+            this.pnlData.Controls.Add(this.lblGeneralAñoMasMensajes);
             this.pnlData.Controls.Add(this.label11);
             this.pnlData.Controls.Add(this.label7);
             this.pnlData.Controls.Add(this.label10);
             this.pnlData.Controls.Add(this.label5);
-            this.pnlData.Controls.Add(this.lblCantidadMensajes);
+            this.pnlData.Controls.Add(this.lblGeneralCantidadMensajes);
             this.pnlData.Controls.Add(this.label3);
             this.pnlData.Controls.Add(this.label9);
             this.pnlData.Controls.Add(this.label1);
@@ -228,95 +230,75 @@ namespace MessagesFinder
             this.pnlData.Size = new System.Drawing.Size(220, 720);
             this.pnlData.TabIndex = 2;
             // 
-            // label20
+            // lblGeneralMensajesPorDia
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(3, 546);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(158, 21);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Cantidad de mensaje:";
+            this.lblGeneralMensajesPorDia.AutoSize = true;
+            this.lblGeneralMensajesPorDia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGeneralMensajesPorDia.Location = new System.Drawing.Point(3, 660);
+            this.lblGeneralMensajesPorDia.Name = "lblGeneralMensajesPorDia";
+            this.lblGeneralMensajesPorDia.Size = new System.Drawing.Size(158, 21);
+            this.lblGeneralMensajesPorDia.TabIndex = 1;
+            this.lblGeneralMensajesPorDia.Text = "Cantidad de mensaje:";
             // 
-            // label19
+            // label28
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(3, 495);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(158, 21);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Cantidad de mensaje:";
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(3, 630);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(124, 25);
+            this.label28.TabIndex = 2;
+            this.label28.Text = "Mensajes/dia";
             // 
-            // label13
+            // lblGeneralPalablasRecividas
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 423);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(158, 21);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Cantidad de mensaje:";
+            this.lblGeneralPalablasRecividas.AutoSize = true;
+            this.lblGeneralPalablasRecividas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGeneralPalablasRecividas.Location = new System.Drawing.Point(3, 423);
+            this.lblGeneralPalablasRecividas.Name = "lblGeneralPalablasRecividas";
+            this.lblGeneralPalablasRecividas.Size = new System.Drawing.Size(158, 21);
+            this.lblGeneralPalablasRecividas.TabIndex = 0;
+            this.lblGeneralPalablasRecividas.Text = "Cantidad de mensaje:";
             // 
-            // label8
+            // lblGeneralDiaMasMensajes
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 300);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(158, 21);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Cantidad de mensaje:";
+            this.lblGeneralDiaMasMensajes.AutoSize = true;
+            this.lblGeneralDiaMasMensajes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGeneralDiaMasMensajes.Location = new System.Drawing.Point(3, 300);
+            this.lblGeneralDiaMasMensajes.Name = "lblGeneralDiaMasMensajes";
+            this.lblGeneralDiaMasMensajes.Size = new System.Drawing.Size(158, 21);
+            this.lblGeneralDiaMasMensajes.TabIndex = 0;
+            this.lblGeneralDiaMasMensajes.Text = "Cantidad de mensaje:";
             // 
-            // label12
+            // lblGeneralPalabasEnviadadGeneral
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(3, 372);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(158, 21);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Cantidad de mensaje:";
+            this.lblGeneralPalabasEnviadadGeneral.AutoSize = true;
+            this.lblGeneralPalabasEnviadadGeneral.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGeneralPalabasEnviadadGeneral.Location = new System.Drawing.Point(3, 372);
+            this.lblGeneralPalabasEnviadadGeneral.Name = "lblGeneralPalabasEnviadadGeneral";
+            this.lblGeneralPalabasEnviadadGeneral.Size = new System.Drawing.Size(158, 21);
+            this.lblGeneralPalabasEnviadadGeneral.TabIndex = 0;
+            this.lblGeneralPalabasEnviadadGeneral.Text = "Cantidad de mensaje:";
             // 
-            // label6
+            // lblGeneralMesMasMensajes
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 249);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(158, 21);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Cantidad de mensaje:";
+            this.lblGeneralMesMasMensajes.AutoSize = true;
+            this.lblGeneralMesMasMensajes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGeneralMesMasMensajes.Location = new System.Drawing.Point(3, 249);
+            this.lblGeneralMesMasMensajes.Name = "lblGeneralMesMasMensajes";
+            this.lblGeneralMesMasMensajes.Size = new System.Drawing.Size(158, 21);
+            this.lblGeneralMesMasMensajes.TabIndex = 0;
+            this.lblGeneralMesMasMensajes.Text = "Cantidad de mensaje:";
             // 
-            // label4
+            // lblGeneralAñoMasMensajes
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 198);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 21);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Cantidad de mensaje:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(3, 516);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(153, 25);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Emojis recibidos:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(3, 465);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(151, 25);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Emojis enviados:";
+            this.lblGeneralAñoMasMensajes.AutoSize = true;
+            this.lblGeneralAñoMasMensajes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGeneralAñoMasMensajes.Location = new System.Drawing.Point(3, 198);
+            this.lblGeneralAñoMasMensajes.Name = "lblGeneralAñoMasMensajes";
+            this.lblGeneralAñoMasMensajes.Size = new System.Drawing.Size(158, 21);
+            this.lblGeneralAñoMasMensajes.TabIndex = 0;
+            this.lblGeneralAñoMasMensajes.Text = "Cantidad de mensaje:";
             // 
             // label11
             // 
@@ -358,15 +340,15 @@ namespace MessagesFinder
             this.label5.TabIndex = 0;
             this.label5.Text = "Mes con mas mensajes:";
             // 
-            // lblCantidadMensajes
+            // lblGeneralCantidadMensajes
             // 
-            this.lblCantidadMensajes.AutoSize = true;
-            this.lblCantidadMensajes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadMensajes.Location = new System.Drawing.Point(3, 126);
-            this.lblCantidadMensajes.Name = "lblCantidadMensajes";
-            this.lblCantidadMensajes.Size = new System.Drawing.Size(158, 21);
-            this.lblCantidadMensajes.TabIndex = 0;
-            this.lblCantidadMensajes.Text = "Cantidad de mensaje:";
+            this.lblGeneralCantidadMensajes.AutoSize = true;
+            this.lblGeneralCantidadMensajes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGeneralCantidadMensajes.Location = new System.Drawing.Point(3, 126);
+            this.lblGeneralCantidadMensajes.Name = "lblGeneralCantidadMensajes";
+            this.lblGeneralCantidadMensajes.Size = new System.Drawing.Size(158, 21);
+            this.lblGeneralCantidadMensajes.TabIndex = 0;
+            this.lblGeneralCantidadMensajes.Text = "Cantidad de mensaje:";
             // 
             // label3
             // 
@@ -384,9 +366,9 @@ namespace MessagesFinder
             this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(44, 46);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 25);
+            this.label9.Size = new System.Drawing.Size(147, 25);
             this.label9.TabIndex = 0;
-            this.label9.Text = "Datos totales";
+            this.label9.Text = "Datos generales";
             // 
             // label1
             // 
@@ -401,69 +383,236 @@ namespace MessagesFinder
             // pntMessagesTools
             // 
             this.pntMessagesTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.pntMessagesTools.Controls.Add(this.label26);
-            this.pntMessagesTools.Controls.Add(this.label24);
-            this.pntMessagesTools.Controls.Add(this.label22);
+            this.pntMessagesTools.Controls.Add(this.lblActualMensajesPorDia);
+            this.pntMessagesTools.Controls.Add(this.lblActualPalablasRecividas);
+            this.pntMessagesTools.Controls.Add(this.label18);
+            this.pntMessagesTools.Controls.Add(this.lblActualDiaMasMensajes);
+            this.pntMessagesTools.Controls.Add(this.lblActualPalabasEnviadadGeneral);
+            this.pntMessagesTools.Controls.Add(this.lblActualAñoMasMensajes);
+            this.pntMessagesTools.Controls.Add(this.label30);
+            this.pntMessagesTools.Controls.Add(this.label15);
+            this.pntMessagesTools.Controls.Add(this.label31);
+            this.pntMessagesTools.Controls.Add(this.label13);
+            this.pntMessagesTools.Controls.Add(this.lblActualMesMasMensajes);
+            this.pntMessagesTools.Controls.Add(this.lblActualCantidadMensajes);
+            this.pntMessagesTools.Controls.Add(this.pnlTitle);
+            this.pntMessagesTools.Controls.Add(this.label12);
+            this.pntMessagesTools.Controls.Add(this.label4);
+            this.pntMessagesTools.Controls.Add(this.lblTotalDays);
+            this.pntMessagesTools.Controls.Add(this.lblUltimoMensaje);
+            this.pntMessagesTools.Controls.Add(this.lblPrimerMensaje);
             this.pntMessagesTools.Controls.Add(this.label25);
             this.pntMessagesTools.Controls.Add(this.label23);
             this.pntMessagesTools.Controls.Add(this.label21);
-            this.pntMessagesTools.Controls.Add(this.Fecha2);
-            this.pntMessagesTools.Controls.Add(this.dateTimePicker1);
-            this.pntMessagesTools.Controls.Add(this.Fecha1);
-            this.pntMessagesTools.Controls.Add(this.label15);
-            this.pntMessagesTools.Controls.Add(this.label16);
-            this.pntMessagesTools.Controls.Add(this.label14);
             this.pntMessagesTools.Location = new System.Drawing.Point(271, 29);
             this.pntMessagesTools.Name = "pntMessagesTools";
             this.pntMessagesTools.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pntMessagesTools.Size = new System.Drawing.Size(789, 92);
+            this.pntMessagesTools.Size = new System.Drawing.Size(789, 184);
             this.pntMessagesTools.TabIndex = 3;
             // 
-            // label26
+            // lblActualMensajesPorDia
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(557, 71);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(57, 17);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "000 dias";
+            this.lblActualMensajesPorDia.AutoSize = true;
+            this.lblActualMensajesPorDia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActualMensajesPorDia.Location = new System.Drawing.Point(606, 85);
+            this.lblActualMensajesPorDia.Name = "lblActualMensajesPorDia";
+            this.lblActualMensajesPorDia.Size = new System.Drawing.Size(158, 21);
+            this.lblActualMensajesPorDia.TabIndex = 3;
+            this.lblActualMensajesPorDia.Text = "Cantidad de mensaje:";
             // 
-            // label24
+            // lblActualPalablasRecividas
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(343, 71);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(74, 17);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "00/00/0000";
+            this.lblActualPalablasRecividas.AutoSize = true;
+            this.lblActualPalablasRecividas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActualPalablasRecividas.Location = new System.Drawing.Point(434, 136);
+            this.lblActualPalablasRecividas.Name = "lblActualPalablasRecividas";
+            this.lblActualPalablasRecividas.Size = new System.Drawing.Size(158, 21);
+            this.lblActualPalablasRecividas.TabIndex = 3;
+            this.lblActualPalablasRecividas.Text = "Cantidad de mensaje:";
             // 
-            // label22
+            // label18
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(135, 71);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(74, 17);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "00/00/0000";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(606, 55);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(124, 25);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Mensajes/dia";
+            // 
+            // lblActualDiaMasMensajes
+            // 
+            this.lblActualDiaMasMensajes.AutoSize = true;
+            this.lblActualDiaMasMensajes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActualDiaMasMensajes.Location = new System.Drawing.Point(220, 136);
+            this.lblActualDiaMasMensajes.Name = "lblActualDiaMasMensajes";
+            this.lblActualDiaMasMensajes.Size = new System.Drawing.Size(158, 21);
+            this.lblActualDiaMasMensajes.TabIndex = 3;
+            this.lblActualDiaMasMensajes.Text = "Cantidad de mensaje:";
+            // 
+            // lblActualPalabasEnviadadGeneral
+            // 
+            this.lblActualPalabasEnviadadGeneral.AutoSize = true;
+            this.lblActualPalabasEnviadadGeneral.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActualPalabasEnviadadGeneral.Location = new System.Drawing.Point(434, 85);
+            this.lblActualPalabasEnviadadGeneral.Name = "lblActualPalabasEnviadadGeneral";
+            this.lblActualPalabasEnviadadGeneral.Size = new System.Drawing.Size(158, 21);
+            this.lblActualPalabasEnviadadGeneral.TabIndex = 4;
+            this.lblActualPalabasEnviadadGeneral.Text = "Cantidad de mensaje:";
+            // 
+            // lblActualAñoMasMensajes
+            // 
+            this.lblActualAñoMasMensajes.AutoSize = true;
+            this.lblActualAñoMasMensajes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActualAñoMasMensajes.Location = new System.Drawing.Point(6, 136);
+            this.lblActualAñoMasMensajes.Name = "lblActualAñoMasMensajes";
+            this.lblActualAñoMasMensajes.Size = new System.Drawing.Size(158, 21);
+            this.lblActualAñoMasMensajes.TabIndex = 7;
+            this.lblActualAñoMasMensajes.Text = "Cantidad de mensaje:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(434, 106);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(168, 25);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "Palabras recibidas:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(220, 106);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(202, 25);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Dia con mas mensajes:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(434, 55);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(166, 25);
+            this.label31.TabIndex = 6;
+            this.label31.Text = "Palabras enviadas:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(6, 106);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(208, 25);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Año con mas mensajes:";
+            // 
+            // lblActualMesMasMensajes
+            // 
+            this.lblActualMesMasMensajes.AutoSize = true;
+            this.lblActualMesMasMensajes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActualMesMasMensajes.Location = new System.Drawing.Point(223, 80);
+            this.lblActualMesMasMensajes.Name = "lblActualMesMasMensajes";
+            this.lblActualMesMasMensajes.Size = new System.Drawing.Size(158, 21);
+            this.lblActualMesMasMensajes.TabIndex = 3;
+            this.lblActualMesMasMensajes.Text = "Cantidad de mensaje:";
+            // 
+            // lblActualCantidadMensajes
+            // 
+            this.lblActualCantidadMensajes.AutoSize = true;
+            this.lblActualCantidadMensajes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActualCantidadMensajes.Location = new System.Drawing.Point(6, 85);
+            this.lblActualCantidadMensajes.Name = "lblActualCantidadMensajes";
+            this.lblActualCantidadMensajes.Size = new System.Drawing.Size(158, 21);
+            this.lblActualCantidadMensajes.TabIndex = 3;
+            this.lblActualCantidadMensajes.Text = "Cantidad de mensaje:";
+            // 
+            // pnlTitle
+            // 
+            this.pnlTitle.Controls.Add(this.lblConversationtitle);
+            this.pnlTitle.Location = new System.Drawing.Point(6, 6);
+            this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.Size = new System.Drawing.Size(777, 46);
+            this.pnlTitle.TabIndex = 0;
+            // 
+            // lblConversationtitle
+            // 
+            this.lblConversationtitle.AutoSize = true;
+            this.lblConversationtitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConversationtitle.Location = new System.Drawing.Point(261, 5);
+            this.lblConversationtitle.Name = "lblConversationtitle";
+            this.lblConversationtitle.Size = new System.Drawing.Size(263, 37);
+            this.lblConversationtitle.TabIndex = 0;
+            this.lblConversationtitle.Text = "Conversation title";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(219, 55);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(209, 25);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Mes con mas mensajes:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(193, 25);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Cantidad de mensaje:";
+            // 
+            // lblTotalDays
+            // 
+            this.lblTotalDays.AutoSize = true;
+            this.lblTotalDays.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDays.Location = new System.Drawing.Point(695, 165);
+            this.lblTotalDays.Name = "lblTotalDays";
+            this.lblTotalDays.Size = new System.Drawing.Size(57, 17);
+            this.lblTotalDays.TabIndex = 0;
+            this.lblTotalDays.Text = "000 dias";
+            // 
+            // lblUltimoMensaje
+            // 
+            this.lblUltimoMensaje.AutoSize = true;
+            this.lblUltimoMensaje.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimoMensaje.Location = new System.Drawing.Point(336, 166);
+            this.lblUltimoMensaje.Name = "lblUltimoMensaje";
+            this.lblUltimoMensaje.Size = new System.Drawing.Size(74, 17);
+            this.lblUltimoMensaje.TabIndex = 0;
+            this.lblUltimoMensaje.Text = "00/00/0000";
+            // 
+            // lblPrimerMensaje
+            // 
+            this.lblPrimerMensaje.AutoSize = true;
+            this.lblPrimerMensaje.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrimerMensaje.Location = new System.Drawing.Point(128, 166);
+            this.lblPrimerMensaje.Name = "lblPrimerMensaje";
+            this.lblPrimerMensaje.Size = new System.Drawing.Size(74, 17);
+            this.lblPrimerMensaje.TabIndex = 0;
+            this.lblPrimerMensaje.Text = "00/00/0000";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(423, 67);
+            this.label25.Location = new System.Drawing.Point(416, 162);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(128, 21);
+            this.label25.Size = new System.Drawing.Size(282, 21);
             this.label25.TabIndex = 0;
-            this.label25.Text = "Conversacion de:";
+            this.label25.Text = "Dias desde el primer al ultimo mensaje:";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(215, 67);
+            this.label23.Location = new System.Drawing.Point(208, 162);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(122, 21);
             this.label23.TabIndex = 0;
@@ -473,111 +622,29 @@ namespace MessagesFinder
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(7, 68);
+            this.label21.Location = new System.Drawing.Point(0, 163);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(122, 21);
             this.label21.TabIndex = 0;
             this.label21.Text = "Primer mensaje:";
             // 
-            // Fecha2
-            // 
-            this.Fecha2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Fecha2.Location = new System.Drawing.Point(497, 4);
-            this.Fecha2.Name = "Fecha2";
-            this.Fecha2.Size = new System.Drawing.Size(258, 25);
-            this.Fecha2.TabIndex = 1;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(209, 37);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(258, 25);
-            this.dateTimePicker1.TabIndex = 1;
-            // 
-            // Fecha1
-            // 
-            this.Fecha1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Fecha1.Location = new System.Drawing.Point(209, 6);
-            this.Fecha1.Name = "Fecha1";
-            this.Fecha1.Size = new System.Drawing.Size(258, 25);
-            this.Fecha1.TabIndex = 1;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(473, 9);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(18, 21);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "a";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(6, 37);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(121, 25);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Mensajes de:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(6, 6);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(197, 25);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Periodo de tiempo de:";
-            // 
             // pnlMessages
             // 
             this.pnlMessages.AutoScroll = true;
-            this.pnlMessages.Location = new System.Drawing.Point(277, 179);
+            this.pnlMessages.Location = new System.Drawing.Point(277, 219);
             this.pnlMessages.Name = "pnlMessages";
-            this.pnlMessages.Size = new System.Drawing.Size(777, 538);
+            this.pnlMessages.Size = new System.Drawing.Size(777, 498);
             this.pnlMessages.TabIndex = 2;
             // 
-            // lblConversationtitle
+            // button1
             // 
-            this.lblConversationtitle.AutoSize = true;
-            this.lblConversationtitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConversationtitle.Location = new System.Drawing.Point(361, 5);
-            this.lblConversationtitle.Name = "lblConversationtitle";
-            this.lblConversationtitle.Size = new System.Drawing.Size(120, 37);
-            this.lblConversationtitle.TabIndex = 0;
-            this.lblConversationtitle.Text = "label28";
-            // 
-            // pnlTitle
-            // 
-            this.pnlTitle.Controls.Add(this.lblConversationtitle);
-            this.pnlTitle.Location = new System.Drawing.Point(277, 127);
-            this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(777, 46);
-            this.pnlTitle.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 610);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 21);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Cantidad de mensaje:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(3, 580);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(124, 25);
-            this.label28.TabIndex = 2;
-            this.label28.Text = "Mensajes/dia";
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(7, 685);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(205, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Calcular";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -585,7 +652,6 @@ namespace MessagesFinder
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.pnlTitle);
             this.Controls.Add(this.pnlMessages);
             this.Controls.Add(this.pntMessagesTools);
             this.Controls.Add(this.pnlTop);
@@ -629,32 +695,22 @@ namespace MessagesFinder
         private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
         private System.Windows.Forms.Panel pnlData;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblGeneralPalablasRecividas;
+        private System.Windows.Forms.Label lblGeneralDiaMasMensajes;
+        private System.Windows.Forms.Label lblGeneralPalabasEnviadadGeneral;
+        private System.Windows.Forms.Label lblGeneralMesMasMensajes;
+        private System.Windows.Forms.Label lblGeneralAñoMasMensajes;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblCantidadMensajes;
+        private System.Windows.Forms.Label lblGeneralCantidadMensajes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pntMessagesTools;
-        private System.Windows.Forms.DateTimePicker Fecha2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker Fecha1;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lblTotalDays;
+        private System.Windows.Forms.Label lblUltimoMensaje;
+        private System.Windows.Forms.Label lblPrimerMensaje;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label21;
@@ -663,8 +719,23 @@ namespace MessagesFinder
         private System.Windows.Forms.Label lblConversationtitle;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Panel pnlTitle;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblGeneralMensajesPorDia;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label lblActualMensajesPorDia;
+        private System.Windows.Forms.Label lblActualPalablasRecividas;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblActualDiaMasMensajes;
+        private System.Windows.Forms.Label lblActualPalabasEnviadadGeneral;
+        private System.Windows.Forms.Label lblActualAñoMasMensajes;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblActualMesMasMensajes;
+        private System.Windows.Forms.Label lblActualCantidadMensajes;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }
 
