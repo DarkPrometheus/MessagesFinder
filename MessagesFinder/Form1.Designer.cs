@@ -42,6 +42,7 @@ namespace MessagesFinder
             this.pnlSenders = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.pnlData = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblGeneralMensajesPorDia = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.lblGeneralPalablasRecividas = new System.Windows.Forms.Label();
@@ -58,11 +59,9 @@ namespace MessagesFinder
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pntMessagesTools = new System.Windows.Forms.Panel();
-            this.lblActualMensajesPorDia = new System.Windows.Forms.Label();
             this.lblActualPalablasRecividas = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.lblActualDiaMasMensajes = new System.Windows.Forms.Label();
-            this.lblActualPalabasEnviadadGeneral = new System.Windows.Forms.Label();
+            this.lblActualPalabasEnviadadas = new System.Windows.Forms.Label();
             this.lblActualAñoMasMensajes = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -81,7 +80,6 @@ namespace MessagesFinder
             this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.pnlMessages = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -163,7 +161,7 @@ namespace MessagesFinder
             // agregarToolStripMenuItem
             // 
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
             this.agregarToolStripMenuItem.Text = "Agregar";
             this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
             // 
@@ -229,6 +227,16 @@ namespace MessagesFinder
             this.pnlData.Name = "pnlData";
             this.pnlData.Size = new System.Drawing.Size(220, 720);
             this.pnlData.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(7, 685);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(205, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Calcular";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // lblGeneralMensajesPorDia
             // 
@@ -383,11 +391,9 @@ namespace MessagesFinder
             // pntMessagesTools
             // 
             this.pntMessagesTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.pntMessagesTools.Controls.Add(this.lblActualMensajesPorDia);
             this.pntMessagesTools.Controls.Add(this.lblActualPalablasRecividas);
-            this.pntMessagesTools.Controls.Add(this.label18);
             this.pntMessagesTools.Controls.Add(this.lblActualDiaMasMensajes);
-            this.pntMessagesTools.Controls.Add(this.lblActualPalabasEnviadadGeneral);
+            this.pntMessagesTools.Controls.Add(this.lblActualPalabasEnviadadas);
             this.pntMessagesTools.Controls.Add(this.lblActualAñoMasMensajes);
             this.pntMessagesTools.Controls.Add(this.label30);
             this.pntMessagesTools.Controls.Add(this.label15);
@@ -410,16 +416,6 @@ namespace MessagesFinder
             this.pntMessagesTools.Size = new System.Drawing.Size(789, 184);
             this.pntMessagesTools.TabIndex = 3;
             // 
-            // lblActualMensajesPorDia
-            // 
-            this.lblActualMensajesPorDia.AutoSize = true;
-            this.lblActualMensajesPorDia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActualMensajesPorDia.Location = new System.Drawing.Point(606, 85);
-            this.lblActualMensajesPorDia.Name = "lblActualMensajesPorDia";
-            this.lblActualMensajesPorDia.Size = new System.Drawing.Size(158, 21);
-            this.lblActualMensajesPorDia.TabIndex = 3;
-            this.lblActualMensajesPorDia.Text = "Cantidad de mensaje:";
-            // 
             // lblActualPalablasRecividas
             // 
             this.lblActualPalablasRecividas.AutoSize = true;
@@ -429,16 +425,6 @@ namespace MessagesFinder
             this.lblActualPalablasRecividas.Size = new System.Drawing.Size(158, 21);
             this.lblActualPalablasRecividas.TabIndex = 3;
             this.lblActualPalablasRecividas.Text = "Cantidad de mensaje:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(606, 55);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(124, 25);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Mensajes/dia";
             // 
             // lblActualDiaMasMensajes
             // 
@@ -450,15 +436,15 @@ namespace MessagesFinder
             this.lblActualDiaMasMensajes.TabIndex = 3;
             this.lblActualDiaMasMensajes.Text = "Cantidad de mensaje:";
             // 
-            // lblActualPalabasEnviadadGeneral
+            // lblActualPalabasEnviadadas
             // 
-            this.lblActualPalabasEnviadadGeneral.AutoSize = true;
-            this.lblActualPalabasEnviadadGeneral.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActualPalabasEnviadadGeneral.Location = new System.Drawing.Point(434, 85);
-            this.lblActualPalabasEnviadadGeneral.Name = "lblActualPalabasEnviadadGeneral";
-            this.lblActualPalabasEnviadadGeneral.Size = new System.Drawing.Size(158, 21);
-            this.lblActualPalabasEnviadadGeneral.TabIndex = 4;
-            this.lblActualPalabasEnviadadGeneral.Text = "Cantidad de mensaje:";
+            this.lblActualPalabasEnviadadas.AutoSize = true;
+            this.lblActualPalabasEnviadadas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActualPalabasEnviadadas.Location = new System.Drawing.Point(434, 85);
+            this.lblActualPalabasEnviadadas.Name = "lblActualPalabasEnviadadas";
+            this.lblActualPalabasEnviadadas.Size = new System.Drawing.Size(158, 21);
+            this.lblActualPalabasEnviadadas.TabIndex = 4;
+            this.lblActualPalabasEnviadadas.Text = "Cantidad de mensaje:";
             // 
             // lblActualAñoMasMensajes
             // 
@@ -636,16 +622,6 @@ namespace MessagesFinder
             this.pnlMessages.Size = new System.Drawing.Size(777, 498);
             this.pnlMessages.TabIndex = 2;
             // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(7, 685);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(205, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Calcular";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -721,11 +697,9 @@ namespace MessagesFinder
         private System.Windows.Forms.Panel pnlTitle;
         private System.Windows.Forms.Label lblGeneralMensajesPorDia;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label lblActualMensajesPorDia;
         private System.Windows.Forms.Label lblActualPalablasRecividas;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label lblActualDiaMasMensajes;
-        private System.Windows.Forms.Label lblActualPalabasEnviadadGeneral;
+        private System.Windows.Forms.Label lblActualPalabasEnviadadas;
         private System.Windows.Forms.Label lblActualAñoMasMensajes;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label15;

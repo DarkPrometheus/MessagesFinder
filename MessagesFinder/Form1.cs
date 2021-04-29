@@ -209,12 +209,89 @@ namespace MessagesFinder
         void GetMetrics()
         {
             DateTime day1 = ToDateTime(messages[messages.Count - 1].date), day2 = ToDateTime(messages[0].date);
-            lblPrimerMensaje.Text = day1.ToString("dd/MM/yyyy"); 
+            lblPrimerMensaje.Text = day1.ToString("dd/MM/yyyy");
             lblUltimoMensaje.Text = day2.ToString("dd/MM/yyyy");
-            lblTotalDays.Text = TotalDays(day1, day2) + " dias";
+            int Dias = TotalDays(day1, day2);
+            lblTotalDays.Text = Dias + " dias";
+
+            GetMessagesMetrics();
+            GetWordsPerUser();
+        }
+
+        // TODO: Crear graficos con los datos
+        void GetMessagesMetrics()
+        {
+            Dictionary<int, int> Years = new Dictionary<int, int>();
+            Dictionary<int, int> Months = new Dictionary<int, int>();
+            Dictionary<int, int> Days = new Dictionary<int, int>();
+            DateTime Fecha;
+
+            for (int i = 0; i < messages.Count; i++)
+            {
+                Fecha = ToDateTime(messages[i].date);
+                // Año
+                if (Years.ContainsKey(Fecha.Year))
+                    Years[Fecha.Year]++;
+                else
+                    Years.Add(Fecha.Year, 1);
+
+                // Mes
+                if (Months.ContainsKey(Fecha.Month))
+                    Months[Fecha.Month]++;
+                else
+                    Months.Add(Fecha.Month, 1);
+
+                // Dia
+                if (Days.ContainsKey(Fecha.Day))
+                    Days[Fecha.Day]++;
+                else
+                    Days.Add(Fecha.Day, 1);
+            }
+
+            int Year = Years.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+            int Month = Months.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+            int Day = Days.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+
+            lblActualAñoMasMensajes.Text = Year.ToString();
+            lblActualMesMasMensajes.Text = ToMonth(Month);
+            lblActualDiaMasMensajes.Text = Day.ToString();
+        }
+
+        void GetWordsPerUser()
+        {
+            Dictionary<string, int> Words = new Dictionary<string, int>();
+            string sender;
+            int messagesTemp;
+            Words.Add(owner, 0);
+            Words.Add("Otro", 0);
+
+            for (int i = 0; i < messages.Count; i++)
+            {
+                sender = ToUTF8(messages[i].sender);
+
+                if (messages[i].content != null)
+                {
+                    messagesTemp = messages[i].content.Split(' ').Length;
+
+                    if (sender == owner)
+                        Words[sender] += messagesTemp;
+                    else
+                        Words["Otro"] += messagesTemp;
+                }
+                else
+                {
+                    if (sender == owner)
+                        Words[sender]++;
+                    else
+                        Words["Otro"]++;
+                }
+            }
+
+            lblActualPalabasEnviadadas.Text = Words[owner].ToString();
+            lblActualPalablasRecividas.Text = Words["Otro"].ToString();
         }
         #endregion
-        // .ToString("dd/MM/yyyy")
+
         #region Mensajes por participante
         List<Messages> messages = new List<Messages>();
         private void GetMessages(object sender, EventArgs e)
@@ -241,6 +318,8 @@ namespace MessagesFinder
                 messages.AddRange(dataTemp.messages);
                 cantidadMensajes += dataTemp.messages.Count;
             }
+
+            lblActualCantidadMensajes.Text = cantidadMensajes.ToString();
             lblConversationtitle.Text = ToUTF8(dataTemp.title);
 
             sp.Start();
@@ -254,8 +333,7 @@ namespace MessagesFinder
                 setMensajes(messages, 1);
 
             lblConversationtitle.Location = new Point(Centrar(lblConversationtitle.Size.Width, pnlTitle.Size.Width), lblConversationtitle.Location.Y);
-            lblActualCantidadMensajes.Text = cantidadMensajes.ToString();
-
+            
             MessageBox.Show(sp.Elapsed.ToString());
         }
 
@@ -328,14 +406,15 @@ namespace MessagesFinder
         }
 
         Queue tempParticipantes = new Queue();
+        // TODO: Mejorar proceso de busqueda
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            tempParticipantes.Clear();
             pnlSenders.Controls.Clear();
             TextBox textBox = sender as TextBox;
             if (!(textBox.Text == ""))
             {
-                
-                foreach (string item in Participantes)
+                 foreach (string item in Participantes)
                 {
                     string tempItem = item.ToLower();
                     string temptxt = textBox.Text.ToLower();
@@ -407,9 +486,58 @@ namespace MessagesFinder
             return t;
         }
 
-        string TotalDays(DateTime day1, DateTime day2)
+        int TotalDays(DateTime day1, DateTime day2)
         {
-            return Math.Round(day2.Subtract(day1).TotalDays).ToString();
+            return Convert.ToInt16(Math.Round(day2.Subtract(day1).TotalDays));
+        }
+
+        string ToMonth(int MonthNumber)
+        {
+            string MonthString;
+            switch (MonthNumber)
+            {
+                case 1:
+                    MonthString = "Enero";
+                    break;
+                case 2:
+                    MonthString = "Febrero";
+                    break;
+                case 3:
+                    MonthString = "Marzo";
+                    break;
+                case 4:
+                    MonthString = "Abril";
+                    break;
+                case 5:
+                    MonthString = "Mayo";
+                    break;
+                case 6:
+                    MonthString = "Junio";
+                    break;
+                case 7:
+                    MonthString = "Julio";
+                    break;
+                case 8:
+                    MonthString = "Agosto";
+                    break;
+                case 9:
+                    MonthString = "Septiembre";
+                    break;
+                case 10:
+                    MonthString = "Octubre";
+                    break;
+                case 11:
+                    MonthString = "Noviembre";
+                    break;
+                case 12:
+                    MonthString = "Diciembre";
+                    break;
+                default:
+                    MonthString = "Error";
+                    break;
+            }
+
+            return MonthString;
         }
         #endregion
     }
