@@ -45,7 +45,7 @@ namespace MessagesFinder
             this.button1 = new System.Windows.Forms.Button();
             this.lblGeneralPalablasRecividas = new System.Windows.Forms.Label();
             this.lblGeneralDiaMasMensajes = new System.Windows.Forms.Label();
-            this.lblGeneralPalabasEnviadad = new System.Windows.Forms.Label();
+            this.lblGeneralPalabasEnviadas = new System.Windows.Forms.Label();
             this.lblGeneralMesMasMensajes = new System.Windows.Forms.Label();
             this.lblGeneralAñoMasMensajes = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -207,7 +207,7 @@ namespace MessagesFinder
             this.pnlData.Controls.Add(this.button1);
             this.pnlData.Controls.Add(this.lblGeneralPalablasRecividas);
             this.pnlData.Controls.Add(this.lblGeneralDiaMasMensajes);
-            this.pnlData.Controls.Add(this.lblGeneralPalabasEnviadad);
+            this.pnlData.Controls.Add(this.lblGeneralPalabasEnviadas);
             this.pnlData.Controls.Add(this.lblGeneralMesMasMensajes);
             this.pnlData.Controls.Add(this.lblGeneralAñoMasMensajes);
             this.pnlData.Controls.Add(this.label11);
@@ -254,15 +254,15 @@ namespace MessagesFinder
             this.lblGeneralDiaMasMensajes.TabIndex = 0;
             this.lblGeneralDiaMasMensajes.Text = "Cantidad de mensaje:";
             // 
-            // lblGeneralPalabasEnviadad
+            // lblGeneralPalabasEnviadas
             // 
-            this.lblGeneralPalabasEnviadad.AutoSize = true;
-            this.lblGeneralPalabasEnviadad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGeneralPalabasEnviadad.Location = new System.Drawing.Point(3, 372);
-            this.lblGeneralPalabasEnviadad.Name = "lblGeneralPalabasEnviadad";
-            this.lblGeneralPalabasEnviadad.Size = new System.Drawing.Size(158, 21);
-            this.lblGeneralPalabasEnviadad.TabIndex = 0;
-            this.lblGeneralPalabasEnviadad.Text = "Cantidad de mensaje:";
+            this.lblGeneralPalabasEnviadas.AutoSize = true;
+            this.lblGeneralPalabasEnviadas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGeneralPalabasEnviadas.Location = new System.Drawing.Point(3, 372);
+            this.lblGeneralPalabasEnviadas.Name = "lblGeneralPalabasEnviadas";
+            this.lblGeneralPalabasEnviadas.Size = new System.Drawing.Size(158, 21);
+            this.lblGeneralPalabasEnviadas.TabIndex = 0;
+            this.lblGeneralPalabasEnviadas.Text = "Cantidad de mensaje:";
             // 
             // lblGeneralMesMasMensajes
             // 
@@ -649,7 +649,7 @@ namespace MessagesFinder
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblGeneralPalablasRecividas;
         private System.Windows.Forms.Label lblGeneralDiaMasMensajes;
-        private System.Windows.Forms.Label lblGeneralPalabasEnviadad;
+        private System.Windows.Forms.Label lblGeneralPalabasEnviadas;
         private System.Windows.Forms.Label lblGeneralMesMasMensajes;
         private System.Windows.Forms.Label lblGeneralAñoMasMensajes;
         private System.Windows.Forms.Label label11;

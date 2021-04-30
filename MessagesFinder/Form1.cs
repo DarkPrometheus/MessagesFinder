@@ -19,6 +19,7 @@ namespace MessagesFinder
         Queue Participantes = new Queue();
         Queue LabelsParticipantes = new Queue();
         string RutaCarpeta, owner;
+        string mensajesGlobales, añoMasMensajes, mesMasMensajes, diaMasMensajes, palabrasEnvidas, palabrasRecividas;
         bool settingsFound = false;
 
         string folderDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MessageFinder");
@@ -35,10 +36,124 @@ namespace MessagesFinder
 
             FirtsStart();
             if (settingsFound)
+            {
                 MetodoParticipantes();
-
-            GlobalMetrics();
+                setGlobalMetrics();
+            }
         }
+
+        #region Settings
+        void FirtsStart()
+        {
+            if (!Directory.Exists(folderDirectory))
+            {
+                Directory.CreateDirectory(folderDirectory);
+                File.Create(settingsFile);
+
+                if (!File.Exists(settingsFile))
+                    File.Create(settingsFile);
+                else
+                    GetSettings();
+            }
+            else
+            {
+                if (!File.Exists(settingsFile))
+                    File.Create(settingsFile);
+                else
+                    GetSettings();
+            }
+        }
+
+        void GetSettings()
+        {
+            try
+            {
+                StreamReader reader = new StreamReader(settingsFile);
+                string[] settings = reader.ReadToEnd().Split(',');
+
+                RutaCarpeta = settings[0];
+                owner = settings[1];
+
+                mensajesGlobales = settings[2];
+
+                añoMasMensajes = settings[3];
+                mesMasMensajes = settings[4];
+                diaMasMensajes = settings[5];
+
+                palabrasEnvidas = settings[6];
+                palabrasRecividas = settings[7];
+
+                settingsFound = true;
+            }
+            catch
+            {
+                settingsFound = false;
+            }
+        }
+
+        void saveSetting()
+        {
+            StreamWriter writer = new StreamWriter(settingsFile);
+            writer.Write(RutaCarpeta + ",");
+            writer.Write(owner + ",");
+            writer.Write(mensajesGlobales + ",");
+
+            writer.Write(añoMasMensajes + ",");
+            writer.Write(mesMasMensajes + ",");
+            writer.Write(diaMasMensajes + ",");
+
+            writer.Write(palabrasEnvidas + ",");
+            writer.Write(palabrasRecividas + ",");
+            writer.Close();
+        }
+
+        void getOwner()
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(RutaCarpeta);
+            Dictionary<string, int> AparicionPorParticipante = new Dictionary<string, int>();
+
+            int c = 1;
+            foreach (var Folder in directoryInfo.GetDirectories())
+            {
+                string RutaArchivo = RutaCarpeta + "\\" + Folder.Name, part;
+                DirectoryInfo TemporalFolder = new DirectoryInfo(RutaArchivo);
+
+                // TODO: Encontrar una mejor forma para obtener el titilo sin entrar a varios archivos en caso de que exista mas de uno
+                foreach (var file in TemporalFolder.GetFiles())
+                {
+                    StreamReader jsonStream = File.OpenText(file.FullName);
+                    string json = jsonStream.ReadToEnd();
+                    Data dataTemp = JsonConvert.DeserializeObject<Data>(json);
+
+                    for (int i = 0; i < dataTemp.participantes.Count; i++)
+                    {
+                        part = ToUTF8(dataTemp.participantes[i].name);
+                        if (AparicionPorParticipante.ContainsKey(part))
+                            AparicionPorParticipante[part]++;
+                        else
+                            AparicionPorParticipante.Add(part, 1);
+                    }
+
+                    break; // Se rompe el ciclo porque solo es necesario analizar el primer archivo
+                }
+                c++;
+            }
+
+            owner = AparicionPorParticipante.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+        }
+
+        void setGlobalMetrics()
+        {
+            lblGeneralCantidadMensajes.Text = mensajesGlobales;
+            
+            lblGeneralAñoMasMensajes.Text = añoMasMensajes;
+            lblGeneralMesMasMensajes.Text = mesMasMensajes;
+            lblGeneralDiaMasMensajes.Text = diaMasMensajes;
+
+            lblGeneralPalabasEnviadas.Text = palabrasEnvidas;
+            lblGeneralPalablasRecividas.Text = palabrasRecividas;
+        }
+        #endregion
 
         #region Metricas globales
         void GlobalMetrics()
@@ -66,7 +181,8 @@ namespace MessagesFinder
             {
                 cantidadMensajes += CountMessages(item);
             }
-            lblGeneralCantidadMensajes.Text = string.Format("{0:###,###,###,###}", cantidadMensajes);
+            mensajesGlobales = string.Format("{0:###,###,###,###}", cantidadMensajes);
+            lblGeneralCantidadMensajes.Text = mensajesGlobales;
         }
 
         void GetGlobalMessagesMetrics()
@@ -116,13 +232,13 @@ namespace MessagesFinder
                 }
             }
 
-            int Year = Years.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
-            int Month = Months.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
-            int Day = Days.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+            añoMasMensajes = Years.Aggregate((l, r) => l.Value > r.Value ? l : r).Key.ToString();
+            mesMasMensajes = ToMonth(Months.Aggregate((l, r) => l.Value > r.Value ? l : r).Key);
+            diaMasMensajes = Days.Aggregate((l, r) => l.Value > r.Value ? l : r).Key.ToString();
 
-            lblGeneralAñoMasMensajes.Text = Year.ToString();
-            lblGeneralMesMasMensajes.Text = ToMonth(Month);
-            lblGeneralDiaMasMensajes.Text = Day.ToString();
+            lblGeneralAñoMasMensajes.Text = añoMasMensajes;
+            lblGeneralMesMasMensajes.Text = mesMasMensajes;
+            lblGeneralDiaMasMensajes.Text = diaMasMensajes;
         }
 
         void WordsGlobalPerUser()
@@ -150,92 +266,12 @@ namespace MessagesFinder
                     }
                 }
             }
-            
-            lblGeneralPalabasEnviadad.Text = string.Format("{0:###,###,###,###}", cantidadPalabras[0]);
-            lblGeneralPalablasRecividas.Text = string.Format("{0:###,###,###,###}", cantidadPalabras[1]);
-        }
-        #endregion
 
-        #region Settings
-        void FirtsStart()
-        {
-            if (!Directory.Exists(folderDirectory))
-            {
-                Directory.CreateDirectory(folderDirectory);
-                File.Create(settingsFile);
+            palabrasEnvidas = string.Format("{0:###,###,###,###}", cantidadPalabras[0]);
+            palabrasRecividas = string.Format("{0:###,###,###,###}", cantidadPalabras[1]);
 
-                if (!File.Exists(settingsFile))
-                    File.Create(settingsFile);
-                else
-                    GetSettings();
-            }
-            else
-            {
-                if (!File.Exists(settingsFile))
-                    File.Create(settingsFile);
-                else
-                    GetSettings();
-            }
-        }
-
-        void GetSettings()
-        {
-            try
-            {
-                StreamReader reader = new StreamReader(settingsFile);
-                string[] settings = reader.ReadToEnd().Split(',');
-                RutaCarpeta = settings[0];
-                owner = settings[1];
-
-                settingsFound = true;
-            }
-            catch
-            {
-                settingsFound = false;
-            }
-        }
-
-        void saveSetting()
-        {
-            StreamWriter writer = new StreamWriter(settingsFile);
-            writer.Write(RutaCarpeta + ",");
-            writer.Write(owner);
-            writer.Close();
-        }
-
-        void getOwner()
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(RutaCarpeta);
-            Dictionary<string, int> AparicionPorParticipante = new Dictionary<string, int>();
-
-            int c = 1;
-            foreach (var Folder in directoryInfo.GetDirectories())
-            {
-                string RutaArchivo = RutaCarpeta + "\\" + Folder.Name, part;
-                DirectoryInfo TemporalFolder = new DirectoryInfo(RutaArchivo);
-
-                // TODO: Encontrar una mejor forma para obtener el titilo sin entrar a varios archivos en caso de que exista mas de uno
-                foreach (var file in TemporalFolder.GetFiles())
-                {
-                    StreamReader jsonStream = File.OpenText(file.FullName);
-                    string json = jsonStream.ReadToEnd();
-                    Data dataTemp = JsonConvert.DeserializeObject<Data>(json);
-
-                    for (int i = 0; i < dataTemp.participantes.Count; i++)
-                    {
-                        part = ToUTF8(dataTemp.participantes[i].name);
-                        if (AparicionPorParticipante.ContainsKey(part))
-                            AparicionPorParticipante[part]++;
-                        else
-                            AparicionPorParticipante.Add(part, 1);
-                    }
-
-                    break; // Se rompe el ciclo porque solo es necesario analizar el primer archivo
-                }
-                c++;
-            }
-
-            owner = AparicionPorParticipante.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+            lblGeneralPalabasEnviadas.Text = palabrasEnvidas;
+            lblGeneralPalablasRecividas.Text = palabrasRecividas;
         }
         #endregion
 
@@ -251,6 +287,7 @@ namespace MessagesFinder
                 {
                     RutaCarpeta = folderBrowserDialog.SelectedPath;
                     getOwner();
+                    GlobalMetrics();
                     saveSetting();
                 }
                 MetodoParticipantes();
@@ -501,6 +538,7 @@ namespace MessagesFinder
             progress.Hide();
         }
 
+        // TODO: Pasar de pagina los mensajes
         void setMensajes(List<Messages> messages, int pagina)
         {
             progress.Show();
