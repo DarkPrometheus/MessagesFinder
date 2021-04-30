@@ -12,9 +12,9 @@ Lo primero que ocuparas sera descargar tu informacion de faccebook, mas especifi
 
 Ve a la pestaña de __"Configuracion"__ en tu cuenta de facebook y selecciona __"Tu información de Facebook"__ y posteriormente __"Descargar tu información"__.
 
-![img-01](.\img\img-configuracion.png)
+![img-01](img\img-configuracion.png)
 
 Selecciona el formato JSON, desmarca todas las opciones y solo selecciona __"Mensajes"__  que se encuentra mas abajo entre todas las casillas.
 
-![img-02](.\img\img-descargar.png)
+![img-02](img\img-descargar.png)
 
