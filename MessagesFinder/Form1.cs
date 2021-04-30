@@ -9,6 +9,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Linq;
 
+
 namespace MessagesFinder
 {
     public partial class Form1 : Form
@@ -24,6 +25,7 @@ namespace MessagesFinder
         string settingsFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MessageFinder", "Setting.txt");
         #endregion
 
+        Stopwatch sp = new Stopwatch();
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +35,120 @@ namespace MessagesFinder
             FirtsStart();
             if (settingsFound)
                 MetodoParticipantes();
+
+            GlobalMetrics();
         }
+
+        #region Metricas globales
+        void GlobalMetrics()
+        {
+            sp.Start();
+            TotalMessages();
+            WordsGlobalPerUser();
+            GetGlobalMessagesMetrics();
+            sp.Stop();
+
+            MessageBox.Show(sp.Elapsed.ToString());
+        }
+
+        void TotalMessages()
+        {
+            int cantidadMensajes = 0;
+
+            DirectoryInfo TemporalFolder = new DirectoryInfo(RutaCarpeta);
+            foreach (var item in TemporalFolder.GetDirectories())
+            {
+                cantidadMensajes += CountMessages(item);
+            }
+            lblGeneralCantidadMensajes.Text = string.Format("{0:###,###,###,###}", cantidadMensajes);
+        }
+
+        void GetGlobalMessagesMetrics()
+        {
+            Dictionary<int, int> Years = new Dictionary<int, int>();
+            Dictionary<int, int> Months = new Dictionary<int, int>();
+            Dictionary<int, int> Days = new Dictionary<int, int>();
+            DateTime Fecha;
+
+            DirectoryInfo TemporalFolder = new DirectoryInfo(RutaCarpeta);
+            foreach (var item in TemporalFolder.GetDirectories())
+            {
+                for (int i = 0; i < item.GetFiles().Length; i++)
+                {
+                    StreamReader jsonStream;
+                    Data dataTemp;
+                    string file, json;
+                    for (int j = 0; j < item.GetFiles().Length; j++)
+                    {
+                        file = item.GetFiles()[j].FullName;
+                        jsonStream = File.OpenText(file);
+                        json = jsonStream.ReadToEnd();
+                        dataTemp = JsonConvert.DeserializeObject<Data>(json);
+
+                        for (int k = 0; k < dataTemp.messages.Count; k++)
+                        {
+                            Fecha = ToDateTime(dataTemp.messages[i].date);
+                            // Año
+                            if (Years.ContainsKey(Fecha.Year))
+                                Years[Fecha.Year]++;
+                            else
+                                Years.Add(Fecha.Year, 1);
+
+                            // Mes
+                            if (Months.ContainsKey(Fecha.Month))
+                                Months[Fecha.Month]++;
+                            else
+                                Months.Add(Fecha.Month, 1);
+
+                            // Dia
+                            if (Days.ContainsKey(Fecha.Day))
+                                Days[Fecha.Day]++;
+                            else
+                                Days.Add(Fecha.Day, 1);
+                        }
+                    }
+                }
+            }
+
+            int Year = Years.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+            int Month = Months.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+            int Day = Days.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+
+            lblGeneralAñoMasMensajes.Text = Year.ToString();
+            lblGeneralMesMasMensajes.Text = ToMonth(Month);
+            lblGeneralDiaMasMensajes.Text = Day.ToString();
+        }
+
+        void WordsGlobalPerUser()
+        {
+            int[] cantidadPalabras = new int[2];
+            int[] cantidadTemp;
+
+            DirectoryInfo TemporalFolder = new DirectoryInfo(RutaCarpeta);
+            foreach (var item in TemporalFolder.GetDirectories())
+            {
+                for (int i = 0; i < item.GetFiles().Length; i++)
+                {
+                    StreamReader jsonStream;
+                    Data dataTemp;
+                    string file, json;
+                    for (int j = 0; j < item.GetFiles().Length; j++)
+                    {
+                        file = item.GetFiles()[j].FullName;
+                        jsonStream = File.OpenText(file);
+                        json = jsonStream.ReadToEnd();
+                        dataTemp = JsonConvert.DeserializeObject<Data>(json);
+                        cantidadTemp = GetWordsPerUser(dataTemp.messages);
+                        cantidadPalabras[0] += cantidadTemp[0];
+                        cantidadPalabras[1] += cantidadTemp[1];
+                    }
+                }
+            }
+            
+            lblGeneralPalabasEnviadad.Text = string.Format("{0:###,###,###,###}", cantidadPalabras[0]);
+            lblGeneralPalablasRecividas.Text = string.Format("{0:###,###,###,###}", cantidadPalabras[1]);
+        }
+        #endregion
 
         #region Settings
         void FirtsStart()
@@ -208,19 +323,28 @@ namespace MessagesFinder
         #region Mensajes metricas
         void GetMetrics()
         {
+            // Obtiene las fechas de la conversacion y hace los calculos necesarios para obtener
+            // el año, mes y dia con mas mensajes enviados, ademas de las palabras enviadas y recividas
             DateTime day1 = ToDateTime(messages[messages.Count - 1].date), day2 = ToDateTime(messages[0].date);
             lblPrimerMensaje.Text = day1.ToString("dd/MM/yyyy");
             lblUltimoMensaje.Text = day2.ToString("dd/MM/yyyy");
             int Dias = TotalDays(day1, day2);
             lblTotalDays.Text = Dias + " dias";
 
-            GetMessagesMetrics();
-            GetWordsPerUser();
+            string[] MessagesPerDate = GetMessagesMetrics();
+            lblActualAñoMasMensajes.Text = MessagesPerDate[0];
+            lblActualMesMasMensajes.Text = MessagesPerDate[1];
+            lblActualDiaMasMensajes.Text = MessagesPerDate[2];
+
+            int[] NumberOfWords = GetWordsPerUser(messages);
+            lblActualPalabasEnviadadas.Text = string.Format("{0:###,###,###,###}", NumberOfWords[0]);
+            lblActualPalablasRecividas.Text = string.Format("{0:###,###,###,###}", NumberOfWords[1]);
         }
 
         // TODO: Crear graficos con los datos
-        void GetMessagesMetrics()
+        string[] GetMessagesMetrics()
         {
+            // Obtiene el año, mes y dia con mas mensajes enviados
             Dictionary<int, int> Years = new Dictionary<int, int>();
             Dictionary<int, int> Months = new Dictionary<int, int>();
             Dictionary<int, int> Days = new Dictionary<int, int>();
@@ -252,31 +376,32 @@ namespace MessagesFinder
             int Month = Months.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
             int Day = Days.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
 
-            lblActualAñoMasMensajes.Text = Year.ToString();
-            lblActualMesMasMensajes.Text = ToMonth(Month);
-            lblActualDiaMasMensajes.Text = Day.ToString();
+            string[] temp = new string[3] { Year.ToString(), ToMonth(Month), Day.ToString() };
+
+            return temp;
         }
 
-        void GetWordsPerUser()
+        int[] GetWordsPerUser(List<Messages> messagesTemp)
         {
+            // Obtiene las cantidad de palabras enviadas y recividas
             Dictionary<string, int> Words = new Dictionary<string, int>();
             string sender;
-            int messagesTemp;
+            int messagesLength;
             Words.Add(owner, 0);
             Words.Add("Otro", 0);
 
-            for (int i = 0; i < messages.Count; i++)
+            for (int i = 0; i < messagesTemp.Count; i++)
             {
-                sender = ToUTF8(messages[i].sender);
+                sender = ToUTF8(messagesTemp[i].sender);
 
-                if (messages[i].content != null)
+                if (messagesTemp[i].content != null)
                 {
-                    messagesTemp = messages[i].content.Split(' ').Length;
+                    messagesLength = messagesTemp[i].content.Split(' ').Length;
 
                     if (sender == owner)
-                        Words[sender] += messagesTemp;
+                        Words[sender] += messagesLength;
                     else
-                        Words["Otro"] += messagesTemp;
+                        Words["Otro"] += messagesLength;
                 }
                 else
                 {
@@ -287,8 +412,9 @@ namespace MessagesFinder
                 }
             }
 
-            lblActualPalabasEnviadadas.Text = Words[owner].ToString();
-            lblActualPalablasRecividas.Text = Words["Otro"].ToString();
+            int[] temp = new int[2] { Words[owner], Words["Otro"] };
+
+            return temp;
         }
         #endregion
 
@@ -296,8 +422,9 @@ namespace MessagesFinder
         List<Messages> messages = new List<Messages>();
         private void GetMessages(object sender, EventArgs e)
         {
-            Stopwatch sp = new Stopwatch();
-
+            // Obtiene los mensajes de la conversacion seleccionada y los almacena en una lista
+            // global para que los demas metodos los utilicen para sus determinados procesos
+            // e imprime los mensajes en un panel
             messages.Clear();
             pnlMessages.Controls.Clear();
             Label label = sender as Label;
@@ -319,12 +446,10 @@ namespace MessagesFinder
                 cantidadMensajes += dataTemp.messages.Count;
             }
 
-            lblActualCantidadMensajes.Text = cantidadMensajes.ToString();
+            lblActualCantidadMensajes.Text = string.Format("{0:###,###,###,###}", cantidadMensajes);
             lblConversationtitle.Text = ToUTF8(dataTemp.title);
 
-            sp.Start();
             GetMetrics();
-            sp.Stop();
 
             // Coloca los mensajes correspondientes en el panel de mensajes
             if (messages.Count < 800)
@@ -333,12 +458,11 @@ namespace MessagesFinder
                 setMensajes(messages, 1);
 
             lblConversationtitle.Location = new Point(Centrar(lblConversationtitle.Size.Width, pnlTitle.Size.Width), lblConversationtitle.Location.Y);
-            
-            MessageBox.Show(sp.Elapsed.ToString());
         }
 
         void setMensajes(List<Messages> messages)
         {
+            // Imprime los mensajes con una estructura en el panel de mensajes
             int y = 20, pnlwidth = pnlMessages.Width / 2;
             for (int i = messages.Count - 1; i >= 0; i--)
             {
@@ -369,6 +493,7 @@ namespace MessagesFinder
 
         void setMensajes(List<Messages> messages, int pagina)
         {
+            // Imprime una parte de los mensajes con una estructura en el panel de mensajes
             int y = 20, limite = 0, TamanoPagina = 800, pnlwidth = pnlMessages.Width / 2;
             if (messages.Count - TamanoPagina * pagina > 0)
                 limite = messages.Count - TamanoPagina * pagina;
@@ -405,11 +530,11 @@ namespace MessagesFinder
             pnlMessages.Controls.Add(button);
         }
 
-        Queue tempParticipantes = new Queue();
         // TODO: Mejorar proceso de busqueda
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            tempParticipantes.Clear();
+            // Busca entre las conversaciones a la indicada en el textbox
+            Queue tempParticipantes = new Queue();
             pnlSenders.Controls.Clear();
             TextBox textBox = sender as TextBox;
             if (!(textBox.Text == ""))
@@ -538,6 +663,25 @@ namespace MessagesFinder
             }
 
             return MonthString;
+        }
+
+        int CountMessages(DirectoryInfo directory)
+        {
+            int cantidadMensajes = 0;
+
+            StreamReader jsonStream;
+            Data dataTemp;
+            string file, json;
+            for (int i = 0; i < directory.GetFiles().Length; i++)
+            {
+                file = directory.GetFiles()[i].FullName;
+                jsonStream = File.OpenText(file);
+                json = jsonStream.ReadToEnd();
+                dataTemp = JsonConvert.DeserializeObject<Data>(json);
+                cantidadMensajes += dataTemp.messages.Count;
+            }
+
+            return cantidadMensajes;
         }
         #endregion
     }
