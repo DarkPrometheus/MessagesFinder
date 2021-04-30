@@ -23,9 +23,10 @@ namespace MessagesFinder
 
         string folderDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MessageFinder");
         string settingsFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MessageFinder", "Setting.txt");
+
+        ProgressBarForm progress = new ProgressBarForm();
         #endregion
 
-        Stopwatch sp = new Stopwatch();
         public Form1()
         {
             InitializeComponent();
@@ -42,13 +43,18 @@ namespace MessagesFinder
         #region Metricas globales
         void GlobalMetrics()
         {
-            sp.Start();
-            TotalMessages();
-            WordsGlobalPerUser();
-            GetGlobalMessagesMetrics();
-            sp.Stop();
+            progress.Show();
+            progress.setMax(3);
 
-            MessageBox.Show(sp.Elapsed.ToString());
+            TotalMessages();
+            progress.Step();
+            
+            WordsGlobalPerUser();
+            progress.Step();
+
+            GetGlobalMessagesMetrics();
+            progress.Step();
+            progress.Hide();
         }
 
         void TotalMessages()
@@ -462,6 +468,8 @@ namespace MessagesFinder
 
         void setMensajes(List<Messages> messages)
         {
+            progress.Show();
+            progress.setMax(messages.Count);
             // Imprime los mensajes con una estructura en el panel de mensajes
             int y = 20, pnlwidth = pnlMessages.Width / 2;
             for (int i = messages.Count - 1; i >= 0; i--)
@@ -488,16 +496,20 @@ namespace MessagesFinder
                     senderMessage.AutoSize = true;
                     y = y + senderMessage.Size.Height + 5;
                 }
+                progress.Step();
             }
+            progress.Hide();
         }
 
         void setMensajes(List<Messages> messages, int pagina)
         {
+            progress.Show();
             // Imprime una parte de los mensajes con una estructura en el panel de mensajes
             int y = 20, limite = 0, TamanoPagina = 800, pnlwidth = pnlMessages.Width / 2;
             if (messages.Count - TamanoPagina * pagina > 0)
                 limite = messages.Count - TamanoPagina * pagina;
 
+            progress.setMax(TamanoPagina);
             for (int i = messages.Count - 1 - ((pagina - 1) * TamanoPagina); i > limite; i--)
             {
                 if (messages[i].content == null)
@@ -522,12 +534,14 @@ namespace MessagesFinder
                     senderMessage.AutoSize = true;
                     y = y + senderMessage.Size.Height + 5;
                 }
+                progress.Step();
             }
 
             Button button = new Button();
             button.Text = "Cargar mas";
             button.Location = new Point(Centrar(button.Size.Width, pnlMessages.Width), y + 25);
             pnlMessages.Controls.Add(button);
+            progress.Hide();
         }
 
         // TODO: Mejorar proceso de busqueda
