@@ -60,6 +60,29 @@ namespace MessagesFinder
                 else
                     GetSettings();
             }
+            ClearLabels();
+        }
+
+        void ClearLabels()
+        {
+            lblActualCantidadMensajes.Text = "0";
+
+            lblActualAñoMasMensajes.Text = "0000";
+            lblActualMesMasMensajes.Text = "Default";
+            lblActualDiaMasMensajes.Text = "00";
+
+            lblActualPalabasEnviadadas.Text = "0";
+            lblActualPalablasRecividas.Text = "0";
+
+
+            lblGeneralCantidadMensajes.Text = "0";
+
+            lblGeneralAñoMasMensajes.Text = "0000";
+            lblGeneralMesMasMensajes.Text = "Default";
+            lblGeneralDiaMasMensajes.Text = "00";
+
+            lblGeneralPalabasEnviadas.Text = "0";
+            lblGeneralPalablasRecividas.Text = "0";
         }
 
         void GetSettings()
@@ -744,7 +767,7 @@ namespace MessagesFinder
 
         [JsonProperty("messages")]
         public List<Messages> messages { get; set; }
-
+        
         [JsonProperty("title")]
         public string title { get; set; }
 
