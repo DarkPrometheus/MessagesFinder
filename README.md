@@ -23,3 +23,7 @@ Selecciona el formato JSON, desmarca todas las opciones y solo selecciona __"Men
 Una vez que tengas la información descargada descomprime la carpeta e iniciar el programa, selecciona el botón archivo en la parte superior, ve a la carpeta donde hallas descomprimido los archivos y entra ve a ***messages*** y selecciona ***inbox***. Una vez que halla cargado todo selecciona la conversación que quieras en el panel de la izquierda y listo.
 
 ![](img/app-02.png)
+
+## Interfaz
+
+![ejemplo](ejemplo.png)
